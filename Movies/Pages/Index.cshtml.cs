@@ -33,7 +33,7 @@ namespace Movies.Pages
                 Movies = MovieDatabase.Search(Movies, search);
             }
 
-            else if (mpaa.Count > 0)
+            if (mpaa.Count > 0)
             {
                 Movies = MovieDatabase.FilterByMPAA(Movies, mpaa);
             }

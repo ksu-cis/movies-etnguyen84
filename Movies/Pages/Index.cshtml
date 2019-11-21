@@ -16,7 +16,10 @@
         }
         @foreach (Movie m in Model.Movies)
         {
-            <div class="movie-entry">
+            <div class="movie-entry" 
+                 data-title="@m.Title"
+                 data-mpaa="@m.MPAA_Rating"
+                 data-imdb="@m.IMDB_Rating">
                 <h2>
                     @m.Title
                     @if (m.Release_Year != null)
@@ -49,33 +52,33 @@
     </div>
 
 
-    <form method="post">
+    <form method="post" id="search-and-filter-form">
         <h2>Search</h2>
-        <input type="text" name="search" value="@Model.search" />
+        <input type="text" id ="search"name="search" value="@Model.search" />
         <label>
-            <input type="checkbox" name="mpaa" value="G" checked="@Model.mpaa.Contains("G")" />
+            <input type="checkbox" class="mpaa" name="mpaa" value="G" checked="@Model.mpaa.Contains("G")" />
             Rated G
         </label>
         <label>
-            <input type="checkbox" name="mpaa" value="PG" checked="@Model.mpaa.Contains("PG")" />
+            <input type="checkbox" class="mpaa" name="mpaa" value="PG" checked="@Model.mpaa.Contains("PG")" />
             Rated PG
         </label>
         <label>
-            <input type="checkbox" name="mpaa" value="PG-13" checked="@Model.mpaa.Contains("PG-13")" />
+            <input type="checkbox" class="mpaa" name="mpaa" value="PG-13" checked="@Model.mpaa.Contains("PG-13")" />
             Rated PG-13
         </label>
         <label>
-            <input type="checkbox" name="mpaa" value="R" checked="@Model.mpaa.Contains("R")" />
+            <input type="checkbox" class="mpaa" name="mpaa" value="R" checked="@Model.mpaa.Contains("R")" />
             Rated R
         </label>
         <label>
-            <input type="checkbox" name="mpaa" value="NC-17" checked="@Model.mpaa.Contains("NC-17")" />
+            <input type="checkbox" class="mpaa" name="mpaa" value="NC-17" checked="@Model.mpaa.Contains("NC-17")" />
             Rated NC-17
         </label>
 
         <label>
             Minimum IMDB Rating:
-            <input type="number" min="0" max="10" step="0.1" value="@Model.minIMDB" name="minIMDB" />
+            <input type="number" min="0" max="10" step="0.1" id ="minIMDB"value="@Model.minIMDB" name="minIMDB" />
         </label>
 
         <input type="submit" value="Search" />
